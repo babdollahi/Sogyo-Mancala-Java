@@ -1,71 +1,63 @@
-<template>
-    <div>
-        <input
-            placeholder="Player 1 name"
-            v-model=playerOne />
+<script setup>
+import { ref, defineEmits } from "vue";
+let playerOne = ref("");
+let playerTwo = ref("");
+let errorMessage = ref("");
 
-        <input
-            placeholder="Player 2 name"
-            v-model=playerTwo />
+const emit = defineEmits(["game-state-changed"]);
 
-        <p>{{ errorMessage }}</p>
+async function confirmPlayers() {
+  if (!playerOne.value) {
+    errorMessage.value = "Player 1 name is required";
+    return;
+  }
 
-        <button v-on:click=confirmPlayers>Start</button>
-    </div>
-</template>
+  if (!playerTwo.value) {
+    errorMessage.value = "Player 2 name is required";
+    return;
+  }
 
-<script>
-export default {
-  name: 'StartScreen',
+  errorMessage.value = undefined;
 
-  data() {
-      return {
-        playerOne: undefined,
-        playerTwo: undefined,
-        errorMessage: "",
+  try {
+    const response = await fetch("api/start", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nameplayer1: playerOne.value,
+        nameplayer2: playerTwo.value,
+      }),
+    });
+
+    if (response.ok) {
+      const gameState = await response.json();
+      emit("game-state-changed", gameState);
+    } else {
+      console.error(response.statusText);
     }
-  },
-
-  methods: {
-    async confirmPlayers() {
-        if (!this.playerOne) {
-            this.errorMessage = "Player 1 name is required";
-            return;
-        }
-
-        if (!this.playerTwo) {
-            this.errorMessage = "Player 2 name is required";
-            return;
-        }
-
-        this.errorMessage = "";
-
-        try {
-            const response = await fetch('api/start', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ nameplayer1: this.playerOne, nameplayer2: this.playerTwo })
-            });
-
-            if (response.ok) {
-                const gameState = await response.json();
-                this.$emit('game-state-changed', gameState);
-            } else {
-                console.error(response.statusText);
-            }
-        } catch (error) {
-            console.error(error.toString());
-        }
-    }
+  } catch (error) {
+    console.error(error.toString());
   }
 }
 </script>
 
+<template>
+  <div>
+    <input placeholder="Player 1 name" v-model="playerOne" />
+
+    <input placeholder="Player 2 name" v-model="playerTwo" />
+
+    <p>{{ errorMessage }}</p>
+
+    <button v-on:click="confirmPlayers">Start</button>
+  </div>
+</template>
+
 <style scoped>
-    p {
-        color: red;
-    }
+p {
+  color: red;
+}
 </style>

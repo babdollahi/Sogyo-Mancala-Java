@@ -1,45 +1,24 @@
-<template>
-  <PlayGame v-if=isGameStarted
-            v-on:game-state-changed=updateGameState
-            v-bind:gameState=gameState
-  />
+<script setup>
+import { ref } from "vue";
+import StartScreen from "./components/StartScreen.vue";
+import PlayGame from "./components/PlayGame.vue";
 
-  <StartScreen v-else
-               v-on:game-state-changed=updateGameState
-  />
-</template>
+const gameState = ref(undefined);
 
-<script>
-import StartScreen from './components/StartScreen.vue';
-import PlayGame from './components/PlayGame.vue';
-
-export default {
-  name: 'App',
-
-  data() {
-    return {
-      gameState: undefined,
-    }
-  },
-
-  computed: {
-    isGameStarted() {
-      return this.gameState !== undefined;
-    }
-  },
-
-  methods: {
-    updateGameState(newGameState) {
-      this.gameState = newGameState
-    }
-  },
-
-  components: {
-    StartScreen,
-    PlayGame
-  }
+function updateGameState(newGameState) {
+  gameState.value = newGameState;
 }
 </script>
+
+<template>
+  <PlayGame
+    v-if="gameState !== undefined"
+    @gameStateChanged="updateGameState"
+    v-bind:gameState="gameState"
+  />
+
+  <StartScreen v-else @gameStateChanged="updateGameState" />
+</template>
 
 <style>
 #app {

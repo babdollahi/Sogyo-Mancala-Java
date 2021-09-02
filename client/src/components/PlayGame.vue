@@ -1,40 +1,29 @@
-<template>
-    <div>
-        <div class="header">
-            <p>{{ gameState.players[0].name }} vs. {{ gameState.players[1].name }}</p>
-        </div>
-
-        <div class="board">
-            To do...
-        </div>
-    </div>
-</template>
-
-<script>
-export default {
-  name: 'PlayGame',
-
-  props: {
-      gameState: {
-          type: Object,
-          required: true,
-      }
-  },
-
-  methods: {
-    play() {
-        
-    }
-  }
-}
+<script setup>
+import { defineProps } from "vue";
+const props = defineProps({
+  gameState: Object,
+});
 </script>
 
-<style scoped>
-    .header {
-        font-weight: bold;
-    }
+<template>
+  <div>
+    <div class="header">
+      <p>
+        {{ props.gameState.players[0].name }} vs.
+        {{ props.gameState.players[1].name }}
+      </p>
+    </div>
 
-    .board {
-        color: darkslategray;
-    }
+    <div class="board">To do...</div>
+  </div>
+</template>
+
+<style scoped>
+.header {
+  font-weight: bold;
+}
+
+.board {
+  color: darkslategray;
+}
 </style>
