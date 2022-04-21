@@ -5,7 +5,6 @@ This repository contains the files for three modules:
 - Model view controller: build a website for your own mancala game (or use the sloppy default implementation).
 - CI/CD: run your tests automatically when pushing code to Gitlab.
 
-
 ## Repository structure
 
 - Main folder (this folder): contains the files relevant for the whole project. For example the Gradle-wrapper files, the .gitignore, and this readme.
@@ -17,39 +16,49 @@ This repository contains the files for three modules:
 
 ## Two servers
 
-The project consists of two servers. The front-end uses a Node.js server. It is mainly used to compile your React code into Javascript files during development. This will shorten the feedback loop between changing your code and seeing the results in the browser. The second server is the back-end, which uses a Jetty server. The back-end server allows your Java API to be accessible for other programs, including the front-end server. To prevent [cross-origin request shenanigans (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS), all requests from the browser will be sent to the front-end server. That server will then forward to the back-end server if needed.
+The project consists of two servers. The front-end uses a Node.js server. It is mainly used to compile your Angular code into Javascript files during development. This will shorten the feedback loop between changing your code and seeing the results in the browser. The second server is the back-end, which uses a Jetty server. The back-end server allows your Java API to be accessible for other programs, including the front-end server. To prevent [cross-origin request shenanigans (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS), all requests from the browser will be sent to the front-end server. That server will then forward to the back-end server if needed, i.e. proxy requests to '/api' to localhost:8080.
 
-The front-end assumes that the back-end will run on port 8080. If that is not the case, edit the snowpack.config.js file.
+The front-end assumes that the back-end will run on port 8080. If that is not the case, edit the proxying configuration.
 
 To run the application you need to have both servers running at the same time. This probably means you'll need to open two different terminals/command prompts to do so.
 
+In one terminal, you would run a command like `npm run start`, and in the other, you would run `./gradlew run`.
 
-## React project structure
+
+## Angular project structure
 
 A React project is generally structured as follows:
 
 ```
-package.json
-public/
-   index.html
-src/
-   Feature1/
-      Feature1.css
-      Feature1.tsx
-      Feature1.tests.tsx
-   Feature2/
-      Feature2.css
-      Feature2.tsx
-      Feature2.tests.tsx
-      Feature2B.tsx
-      Feature2B.tests.tsx
+angular.json       // angular CLI configuration 
+package.json       // npm package dependency list
+package-lock.json  // list of specific npm package dependencies currently used
+node_modules/      // downloaded libraries of node packages to import from
+tsconfig.json      // typescript configuration
+src/               // folder with project files
+   favicon.ico     // icon image
+   index.html      // base html file
+   main.ts         // base typescript file
+   polyfills.ts    // list of imports for browser functionality support within angular code
+   styles.css      // declares possible css styles in use
+   assets/         // folder for images and language files, etc.
+   environments/   // folder with configuration for particular build targets
+   app/            // folder for project logic and components
+      app.component.ts        // defines logic for the root component
+      app.component.html      // defines html template associated with root component
+      app.component.css       // defines style associated with root component
+      app.module.ts           // wrapper around component that contains information on how to assemble the full application
 ```
 
-The public directory contains static files, such as the relatively empty index.html file needed to run React. The src file contains the React code. The convention for TypeScript projects is to use the .tsx file extension for files that contain React components. Files are generally grouped together in directories by feature. These directories contain all files related to that feature, such as coponents, stylesheets, images and tests.
+The root directory contains configuration files containing different sorts of settings. The src file contains basic files needed for angular to work with, such as the relatively empty index.html. 
+
+The app folder contains the Angular code that we are interested in. The convention for TypeScript projects (which angular uses) is to use the .ts file extension for files that contain Angular components. Files are generally grouped together in directories by feature. These directories contain all files related to that feature, such as components, stylesheets, etc.
 
 ## Installing front-end dependencies
 
-To run the React application you'll first need to install the required dependencies. These dependencies are defined in the package.json file. Run the command `npm install` from the `/client` directory.
+To run the Angular application you'll first need to install the required dependencies. These dependencies are defined in the package.json file. Run the command `npm install` from the `/client` directory.
+
+To build and bundle your angular project, you will also need the Angular CLI tool, which you can install using `npm install -g @angular/cli`.
 
 ## Running the front-end
 
@@ -57,9 +66,7 @@ The package.json specifies which commands can be run using npm (e.g. npm run sta
 
 ```bash
 # Start a development server
-npm run start
-# Check code for common mistakes and style conventions
-npm run lint
+ng serve
 ```
 
 
