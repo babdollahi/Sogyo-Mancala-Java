@@ -30,20 +30,20 @@ In one terminal, you would run a command like `npm run start`, and in the other,
 A React project is generally structured as follows:
 
 ```
-angular.json       // angular CLI configuration 
-package.json       // npm package dependency list
-package-lock.json  // list of specific npm package dependencies currently used
-node_modules/      // downloaded libraries of node packages to import from
-tsconfig.json      // typescript configuration
-src/               // folder with project files
-   favicon.ico     // icon image
-   index.html      // base html file
-   main.ts         // base typescript file
-   polyfills.ts    // list of imports for browser functionality support within angular code
-   styles.css      // declares possible css styles in use
-   assets/         // folder for images and language files, etc.
-   environments/   // folder with configuration for particular build targets
-   app/            // folder for project logic and components
+angular.json                  // angular CLI configuration 
+package.json                  // npm package dependency list
+package-lock.json             // list of specific npm package dependencies currently used
+node_modules/                 // downloaded libraries of node packages to import from
+tsconfig.json                 // typescript configuration
+src/                          // folder with project files
+   favicon.ico                // icon image
+   index.html                 // base html file
+   main.ts                    // base typescript file
+   polyfills.ts               // list of imports for browser functionality support within angular code
+   styles.css                 // declares possible css styles in use
+   assets/                    // folder for images and language files, etc.
+   environments/              // folder with configuration for particular build targets
+   app/                       // folder for project logic and components
       app.component.ts        // defines logic for the root component
       app.component.html      // defines html template associated with root component
       app.component.css       // defines style associated with root component
