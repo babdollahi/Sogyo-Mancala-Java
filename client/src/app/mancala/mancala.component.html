@@ -1,0 +1,17 @@
+<form>
+  <ol>
+    <li>
+      <label>Player 1:
+        <player (playerCreated)="player1 = $event"></player>
+      </label>
+    </li>
+    <li>
+      <label>Player 2:
+        <player (playerCreated)="player2 = $event"></player>
+      </label>
+    </li>
+    <li>
+      <button type="button" (click)="start()" [disabled]="!(player1 && player2)">Start Mancala</button>
+    </li>
+  </ol>
+</form>
