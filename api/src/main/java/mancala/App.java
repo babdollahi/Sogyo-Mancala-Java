@@ -1,49 +1,54 @@
 package mancala;
 
-import org.eclipse.jetty.server.Handler;
+import java.net.URI;
+
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.handler.*;
-import org.eclipse.jetty.webapp.*;
-import org.eclipse.jetty.servlet.ServletHandler;
+import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.glassfish.jersey.jetty.JettyHttpContainerFactory;
+import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
-import mancala.api.*;
+import jakarta.ws.rs.core.UriBuilder;
+import mancala.filters.CORSFilter;
 
 public class App {
+
     public static void main(String[] args) throws Exception {
         Server server = startServer(8080);
-        ServletContextHandler context = createStatefulContext(server);
-        registerServlets(context);
+        ServletContextHandler context = createStatefulContext();
+        server.setHandler(context);
 
         server.start();
-        System.out.println("Started server.");
-        System.out.println("Listening on http://localhost:8080/");
-        System.out.println("Press CTRL+C to exit.");
         server.join();
     }
 
     private static Server startServer(int port) {
-        return new Server(8080);
+        URI baseUri = UriBuilder.fromUri("http://localhost/").port(port).build();
+        ResourceConfig config = new ResourceConfig().packages("mancala.api");
+        config.register(CORSFilter.class);
+
+        Server server = JettyHttpContainerFactory.createServer(baseUri, config, false);
+
+        return server;
     }
 
-    private static ServletContextHandler createStatefulContext(Server server) {
-        ServletContextHandler context = 
-                new ServletContextHandler(ServletContextHandler.SESSIONS);
+    private static ServletContextHandler createStatefulContext() {
+        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
-        server.setHandler(context);
+        registerServlets(context);
+
         return context;
     }
 
     private static void registerServlets(ServletContextHandler context) {
-        // Use the Jersey framework to translate the classes in the
-        // mancala.api package to server endpoints (servlets).
-        // For example, the StartMancala class will become an endpoint at
-        // http://localost:8080/mancala/api/start
-        ServletHolder serverHolder = context.addServlet(ServletContainer.class, "/mancala/api/*");
+        ResourceConfig config = new ResourceConfig().packages("mancala.api");
+        config.register(CORSFilter.class);
+        var container = new ServletContainer(config);
+
+        ServletHolder serverHolder = new ServletHolder(container);
+        context.addServlet(serverHolder, "/*");
         serverHolder.setInitOrder(1);
-        serverHolder.setInitParameter("jersey.config.server.provider.packages", 
-                "mancala.api");
     }
 }

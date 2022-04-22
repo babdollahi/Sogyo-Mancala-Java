@@ -18,20 +18,25 @@ export class MancalaComponent implements OnInit {
   }
 
   async start(): Promise<void> {
-    const players = { player1: this.player1, player2: this.player2 };
-    const respose = await fetch('mancala/api/start', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(players)
-    });
+    try {
+      const players = { player1: this.player1, player2: this.player2 };
+      const respose = await fetch('http://localhost:8080/start', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(players)
+      });
 
-    if (respose.ok) {
-      this.router.navigateByUrl('/play', { state: players });
-    } else {
-      console.error(respose.statusText);
+      if (respose.ok) {
+        this.router.navigateByUrl('/play', { state: players });
+      } else {
+        console.error(respose.statusText);
+      }
+    }
+    catch (error) {
+      console.error(error);
     }
   }
 }
