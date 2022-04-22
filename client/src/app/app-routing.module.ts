@@ -8,7 +8,8 @@ import { PlayComponent } from './play/play.component';
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'mancala', component: MancalaComponent },
-  { path: 'play', component: PlayComponent, data: { player1: Player, player2: Player } }
+  { path: 'play', component: PlayComponent, data: { player1: Player, player2: Player } },
+  { path: '', redirectTo: '/mancala', pathMatch: 'full' },
 ];
 
 @NgModule({

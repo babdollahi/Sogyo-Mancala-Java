@@ -1,7 +1,7 @@
 package mancala.domain;
 
 public class MancalaImpl implements Mancala {
-    public MancalaImpl() {
+    public MancalaImpl(Player player1, Player player2) {
         // Initialize the game here.
     }
 

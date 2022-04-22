@@ -1,0 +1,30 @@
+h1 {
+  background-color: green;
+  padding: 1em;
+  margin: 0;
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+}
+
+li {
+  display: inline-block;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+li a:hover, li a.active {
+  background-color: #111111;
+}
