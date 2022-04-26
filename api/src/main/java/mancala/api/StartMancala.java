@@ -1,28 +1,33 @@
 package mancala.api;
 
+import java.io.IOException;
 import jakarta.servlet.http.*;
+import jakarta.servlet.ServletException;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
 
 import mancala.api.models.*;
 import mancala.domain.MancalaImpl;
-import mancala.domain.Player;
 
 @Path("/start")
 public class StartMancala {
     @POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response start(@Context HttpServletRequest request, StartMancalaModel model) {
-		
-        var player1 = new Player(model.getPlayer1().getName());
-        var player2 = new Player(model.getPlayer2().getName());
-        var mancala = new MancalaImpl(player1, player2);
+	public Response execute(
+			@Context HttpServletRequest request, 
+			StartMancalaModel model) {
 
+        var mancala = new MancalaImpl();
+        PlayerModel player1 = model.getPlayer1();
+		PlayerModel player2 = model.getPlayer2();
+		
         HttpSession session = request.getSession(true);
         session.setAttribute("mancala", mancala);
+        session.setAttribute("player1", player1.getName());
+        session.setAttribute("player2", player2.getName());
 
-		var output = new MancalaModel(model.getPlayer1(), model.getPlayer2());
+		var output = new Mancala(mancala, player1.getName(), player2.getName());
 		return Response.status(200).entity(output).build();
 	}
 }

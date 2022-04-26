@@ -15,7 +15,7 @@ export class PlayComponent implements OnInit {
   constructor(private router: Router) {
     const navigation = this.router.getCurrentNavigation();
 
-    if (navigation && navigation.extras && navigation.extras.state && navigation.extras.state) {
+    if (navigation && navigation.extras && navigation.extras.state) {
       this.player1 = navigation.extras.state['player1'];
       this.player2 = navigation.extras.state['player2'];
     } else {

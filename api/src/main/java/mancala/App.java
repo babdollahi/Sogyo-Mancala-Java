@@ -1,17 +1,15 @@
 package mancala;
 
-import java.net.URI;
-
+import jakarta.ws.rs.core.UriBuilder;
+import mancala.filters.CORSFilter;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.jetty.JettyHttpContainerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
-import jakarta.ws.rs.core.UriBuilder;
-import mancala.filters.CORSFilter;
+import java.net.URI;
 
 public class App {
 
