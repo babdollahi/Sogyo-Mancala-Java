@@ -41,7 +41,7 @@ public class CORSFilter implements ContainerRequestFilter, ContainerResponseFilt
     private void appendCorsHeaders(ContainerResponseContext response) {
         MultivaluedMap<String, Object> headers = response.getHeaders();
 
-        headers.add(RESPONSE_HEADER_ALLOW_ORIGIN, "*");
+        headers.add(RESPONSE_HEADER_ALLOW_ORIGIN, "http://localhost:4200");
         headers.add(RESPONSE_HEADER_ALLOW_HEADERS, "CSRF-Token, X-Requested-By, Authorization, Content-Type");
         headers.add(RESPONSE_HEADER_ALLOW_CREDENTIALS, "true");
         headers.add(RESPONSE_HEADER_ALLOW_METHODS, "GET, POST, PUT, DELETE, OPTIONS, HEAD");

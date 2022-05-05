@@ -22,6 +22,7 @@ export class MancalaComponent implements OnInit {
       const players = { player1: this.player1, player2: this.player2 };
       const respose = await fetch('http://localhost:8080/start', {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
