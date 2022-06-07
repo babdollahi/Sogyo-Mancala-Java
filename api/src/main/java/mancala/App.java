@@ -1,15 +1,9 @@
 package mancala;
 
-import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.handler.*;
-import org.eclipse.jetty.webapp.*;
-import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.servlet.ServletContainer;
-
-import mancala.api.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -29,8 +23,7 @@ public class App {
     }
 
     private static ServletContextHandler createStatefulContext(Server server) {
-        ServletContextHandler context = 
-                new ServletContextHandler(ServletContextHandler.SESSIONS);
+        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         server.setHandler(context);
         return context;
@@ -43,7 +36,7 @@ public class App {
         // http://localost:8080/mancala/api/start
         ServletHolder serverHolder = context.addServlet(ServletContainer.class, "/mancala/api/*");
         serverHolder.setInitOrder(1);
-        serverHolder.setInitParameter("jersey.config.server.provider.packages", 
+        serverHolder.setInitParameter("jersey.config.server.provider.packages",
                 "mancala.api");
     }
 }
