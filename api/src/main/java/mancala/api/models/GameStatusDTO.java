@@ -1,6 +1,6 @@
 package mancala.api.models;
 
-import mancala.domain.IMancala;
+import mancala.domain.Playable;
 
 public class GameStatusDTO {
 
@@ -8,10 +8,9 @@ public class GameStatusDTO {
     public String winner;
 
     public GameStatusDTO(
-        IMancala mancala
-    ) {
+            Playable mancala) {
         this.endOfGame = mancala.isEndOfGame();
-        switch(mancala.getWinner()){
+        switch (mancala.getWinner()) {
             case PLAYER_1:
                 this.winner = mancala.getNameOfPlayerOne();
                 break;
@@ -20,18 +19,18 @@ public class GameStatusDTO {
                 break;
             case DRAW:
                 this.winner = mancala.getNameOfPlayerOne()
-                                + " and "
-                                + mancala.getNameOfPlayerTwo();
+                        + " and "
+                        + mancala.getNameOfPlayerTwo();
             default:
                 this.winner = null;
         }
     }
 
-    public boolean getEndOfGame() { 
-        return endOfGame; 
+    public boolean getEndOfGame() {
+        return endOfGame;
     }
 
-    public String getWinner() { 
-        return winner; 
+    public String getWinner() {
+        return winner;
     }
 }

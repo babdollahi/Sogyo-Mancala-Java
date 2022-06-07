@@ -1,6 +1,6 @@
 package mancala.api.models;
 
-import mancala.domain.IMancala;
+import mancala.domain.Playable;
 
 public class PlayerDTO {
 
@@ -9,30 +9,28 @@ public class PlayerDTO {
 	public boolean hasTurn;
 	public PitDTO[] pits = new PitDTO[7];
 
-    public PlayerDTO(
-		IMancala mancala,
-		String name
-	) {
+	public PlayerDTO(
+			Playable mancala,
+			String name) {
 		this.name = name;
-        this.hasTurn = mancala.isPlayersTurn(name);
+		this.hasTurn = mancala.isPlayersTurn(name);
 		int firstHoleIndex = this.name == mancala.getNameOfPlayerOne() ? 0 : 7;
-		for(int i = 0; i < 7; ++i) {
+		for (int i = 0; i < 7; ++i) {
 			this.pits[i] = new PitDTO(
-				firstHoleIndex + i, 
-				mancala.getStonesForPit(i + firstHoleIndex)
-			);
+					firstHoleIndex + i,
+					mancala.getStonesForPit(i + firstHoleIndex));
 		}
 	}
-    
-	public String getName() { 
-		return name; 
+
+	public String getName() {
+		return name;
 	}
 
-	public boolean getHasTurn() { 
-		return hasTurn; 
+	public boolean getHasTurn() {
+		return hasTurn;
 	}
 
-	public PitDTO[] getPits() { 
-		return pits; 
+	public PitDTO[] getPits() {
+		return pits;
 	}
 }
