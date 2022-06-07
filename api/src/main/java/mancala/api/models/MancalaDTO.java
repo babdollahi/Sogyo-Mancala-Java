@@ -1,6 +1,6 @@
 package mancala.api.models;
 
-import mancala.domain.IMancala;
+import mancala.domain.Playable;
 
 public class MancalaDTO {
 
@@ -8,19 +8,18 @@ public class MancalaDTO {
     public PlayerDTO[] players;
 
     public MancalaDTO(
-            IMancala mancala 
-        ) {
+            Playable mancala) {
         players = new PlayerDTO[2];
         players[0] = new PlayerDTO(mancala, mancala.getNameOfPlayerOne());
         players[1] = new PlayerDTO(mancala, mancala.getNameOfPlayerTwo());
         gameStatus = new GameStatusDTO(mancala);
     }
 
-    public PlayerDTO[] getPlayers() { 
-        return players; 
+    public PlayerDTO[] getPlayers() {
+        return players;
     }
-    
-    public GameStatusDTO getGameStatus() { 
-        return gameStatus; 
+
+    public GameStatusDTO getGameStatus() {
+        return gameStatus;
     }
 }

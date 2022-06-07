@@ -8,7 +8,7 @@ import jakarta.servlet.http.*;
 import jakarta.ws.rs.core.*;
 
 import mancala.api.models.*;
-import mancala.domain.Mancala;
+import mancala.domain.Playable;
 
 public class StartMancalaTest {
     @Test
@@ -20,7 +20,7 @@ public class StartMancalaTest {
     @Test
     public void startingMancalaReturnsAGameWithoutAWinner() {
         var response = startMancala("Mario", "Luigi");
-        var entity = (MancalaDTO)response.getEntity();
+        var entity = (MancalaDTO) response.getEntity();
         var gameState = entity.getGameStatus();
         assertFalse(gameState.getEndOfGame());
         assertNull(gameState.getWinner());
@@ -29,7 +29,7 @@ public class StartMancalaTest {
     @Test
     public void startingMancalaReturnsThePlayerData() {
         var response = startMancala("Mario", "Luigi");
-        var entity = (MancalaDTO)response.getEntity();
+        var entity = (MancalaDTO) response.getEntity();
         var players = entity.getPlayers();
         assertEquals(2, players.length);
         assertEquals("Mario", players[0].getName());
@@ -39,7 +39,7 @@ public class StartMancalaTest {
     @Test
     public void startingMancalaReturnsThePits() {
         var response = startMancala("Mario", "Luigi");
-        var entity = (MancalaDTO)response.getEntity();
+        var entity = (MancalaDTO) response.getEntity();
         var players = entity.getPlayers();
         assertEquals(7, players[0].getPits().length);
         assertEquals(0, players[0].getPits()[0].getIndex());
@@ -56,7 +56,7 @@ public class StartMancalaTest {
     @Test
     public void startingMancalaSavesTheNewGameInASession() {
         startMancala("Mario", "Luigi");
-        verify(session).setAttribute(eq("mancala"), any(Mancala.class));
+        verify(session).setAttribute(eq("mancala"), any(Playable.class));
     }
 
     private Response startMancala(String namePlayer1, String namePlayer2) {

@@ -1,7 +1,7 @@
 package mancala.domain;
 
-public interface IMancala {
-	
+public interface Playable {
+
 	public enum Winner {
 		NO_ONE,
 		PLAYER_1,
@@ -11,41 +11,48 @@ public interface IMancala {
 
 	/**
 	 * Method returning the name of the first player
+	 * 
 	 * @return The name of the first player.
 	 */
 	String getNameOfPlayerOne();
 
 	/**
 	 * Method returning the name of the opponent
+	 * 
 	 * @return The name of the first player.
 	 */
 	String getNameOfPlayerTwo();
 
 	/**
 	 * Method indicating if the first player has the next turn or not.
-     * @param The player which you want to know the turn for.
-	 * @return True if the player has the turn. False if it's the turn of the other player.
+	 * 
+	 * @param The player which you want to know the turn for.
+	 * @return True if the player has the turn. False if it's the turn of the other
+	 *         player.
 	 */
 	boolean isPlayersTurn(String name);
-	
+
 	/**
 	 * Method for playing the specified recess. Index is as specified below:
 	 * 
-	 *    12 11 10  9  8  7
-	 * 13                    6
-	 *     0  1  2  3  4  5
+	 * 12 11 10 9 8 7
+	 * 13 6
+	 * 0 1 2 3 4 5
 	 * 
 	 * @param index Index of the recess to be played.
-	 * @return 15 item long Array with the current state of the game. The 15th item indicates which player has the next turn (possible values are 1 or 2).
+	 * @return 15 item long Array with the current state of the game. The 15th item
+	 *         indicates which player has the next turn (possible values are 1 or
+	 *         2).
 	 */
 	void playPit(int index);
-	
+
 	/**
-	 * Method for returning the amount of stones in de specified pit. Index is as specified below:
+	 * Method for returning the amount of stones in de specified pit. Index is as
+	 * specified below:
 	 * 
-	 *    12 11 10  9  8  7
-	 * 13                    6
-	 *     0  1  2  3  4  5
+	 * 12 11 10 9 8 7
+	 * 13 6
+	 * 0 1 2 3 4 5
 	 * 
 	 * @param index Index of the pit.
 	 * @return Amount of stone.
@@ -63,10 +70,10 @@ public interface IMancala {
 	 * Method for retrieving the player that has won the game.
 	 * 
 	 * @return Enum value representing which player(s) (if any) won the game.
-	 * 0 : No Winner
-	 * 1 : Player 1
-	 * 2 : Player 2
-	 * 3 : Draw
+	 *         0 : No Winner
+	 *         1 : Player 1
+	 *         2 : Player 2
+	 *         3 : Draw
 	 */
 	Winner getWinner();
 
