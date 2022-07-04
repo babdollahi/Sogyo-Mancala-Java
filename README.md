@@ -97,7 +97,7 @@ If you run the build tool with either the `build` or `test` options, you will se
 
 The tests fail because we have no domain classes implemented yet.
 
-In our `StartMancala` servlet, we istantiate our domain as `null` on line 22. Instead, we should instantiate a class here that implements the `Playable` interface. You can do so by merging the mainline branch (where you first wrote your mancala game) into this branch and implementing a `MancalaGame.java` class that uses the methods from your classes to adhere to the `Playable` interface. 
+In our `StartMancala` servlet, we instantiate our domain as `null` on line 22. Instead, we should instantiate a class here that implements the `Playable` interface. You can do so by merging the mainline branch (where you first wrote your mancala game) into this branch and implementing a `MancalaGame.java` class that uses the methods from your classes to adhere to the `Playable` interface. 
 
 If you do so correctly, these tests should succeed, and the back-end should build successfully.
 
