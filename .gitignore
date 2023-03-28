@@ -5,4 +5,8 @@
 **/build
 build
 */[Bb]in/
+<<<<<<< HEAD
 node_modules
+=======
+node_modules
+>>>>>>> mainline
