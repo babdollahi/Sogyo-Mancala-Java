@@ -5,6 +5,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
 
 import mancala.api.models.*;
+import mancala.domain.MancalaGame;
 import mancala.domain.Playable;
 
 @Path("/start")
@@ -19,7 +20,7 @@ public class StartMancala {
 		HttpSession session = request.getSession(true);
 		
 		// Initialize game.
-		Playable mancala = null;
+		Playable mancala = new MancalaGame(players.getNameplayer1(), players.getNameplayer2());
 
 		// Attach game to session.
 		session.setAttribute("mancala", mancala);
