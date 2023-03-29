@@ -20,6 +20,8 @@ export function Play({ gameState, setGameState }: PlayProps) {
       <button className="button button1">{gameState.players[0].pits[4].nrOfStones} </button>
       <button className="button button1">{gameState.players[0].pits[5].nrOfStones} </button>
       <button className="button button2">{gameState.players[0].pits[6].nrOfStones} </button>
+      <button className="button button3">{gameState.players[1].pits[6].nrOfStones} </button>
+
       <p></p>
       <button className="button button1">{gameState.players[1].pits[0].nrOfStones} </button>
       <button className="button button1">{gameState.players[1].pits[1].nrOfStones} </button>
@@ -27,11 +29,7 @@ export function Play({ gameState, setGameState }: PlayProps) {
       <button className="button button1">{gameState.players[1].pits[3].nrOfStones} </button>
       <button className="button button1">{gameState.players[1].pits[4].nrOfStones} </button>
       <button className="button button1">{gameState.players[1].pits[5].nrOfStones} </button>
-      <button className="button button3">{gameState.players[1].pits[6].nrOfStones} </button>
       <p>Player one</p>
-
-
-      
       
     </>
   );

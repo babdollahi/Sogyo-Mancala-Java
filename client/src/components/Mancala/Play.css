@@ -28,14 +28,14 @@ button {
     padding: 107px 50px;
     background-color: pink;
     right: 20%;
-    top: 45%;
+    /* top: 45%; */
     position: fixed;
 }
 .button3 {
     padding: 107px 50px;
     background-color: pink;
     left: 20%;
-    top: 45%;
+    /* top: 45%; */
     position: fixed;
 }
   button:hover {
