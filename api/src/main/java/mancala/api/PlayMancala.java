@@ -24,6 +24,7 @@ public class PlayMancala {
         Playable game = (Playable) session.getAttribute("mancala");
         // Play a pit.
         game.playPit(index.getIndex());
+        game.getWinner();
 
         // Use the game to create a DTO.
         MancalaDTO output =  new MancalaDTO(game);

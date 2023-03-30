@@ -1,6 +1,6 @@
+import React from "react";
 import { GameState } from "../../types/gameState";
 import "./Play.css";
-import React, { useState } from 'react';
 
 type PlayProps = {
   gameState: GameState;
@@ -9,7 +9,6 @@ type PlayProps = {
 
 export function Play({ gameState, setGameState }: PlayProps) {
   
-  const [pitIndex, setPitIndex] = useState(null);
   async function handlePitClick(index: number ) {
 
     try {
@@ -40,8 +39,12 @@ export function Play({ gameState, setGameState }: PlayProps) {
     <>
       <p>
         {gameState.players[0].name} vs {gameState.players[1].name}
+        <p>Status of Game: {gameState.gameStatus.endOfGame ? "Game ended!" : "Continuing!"}</p>
+        {gameState.gameStatus.endOfGame && <p>The winner is: {gameState.gameStatus.winner}</p>}
+        {gameState.players[0].hasTurn ? <p>{gameState.players[0].name} please select a bowl to play!</p> : <p>{gameState.players[1].name} please select a bowl to play!</p>}
+
       </p>
-      <p>Player two</p>
+      <p>Player two: {gameState.players[1].name}</p>
       <button className="button button1" onClick={() => handlePitClick(12)}> {gameState.players[1].pits[5].nrOfStones} </button>
       <button className="button button1" onClick={() => handlePitClick(11)}>{gameState.players[1].pits[4].nrOfStones} </button>
       <button className="button button1" onClick={() => handlePitClick(10)}>{gameState.players[1].pits[3].nrOfStones} </button>
@@ -58,9 +61,7 @@ export function Play({ gameState, setGameState }: PlayProps) {
       <button className="button button1" onClick={() => handlePitClick(3)}>{gameState.players[0].pits[3].nrOfStones} </button>
       <button className="button button1" onClick={() => handlePitClick(4)}>{gameState.players[0].pits[4].nrOfStones} </button>
       <button className="button button1" onClick={() => handlePitClick(5)}>{gameState.players[0].pits[5].nrOfStones} </button>
-      <p>Player one</p>
-
-      {pitIndex !== null && <p>Clicked pit index: {pitIndex} </p>}
+      <p>Player one: {gameState.players[0].name}</p>
 
  
     </>
