@@ -38,13 +38,26 @@ export function Play({ gameState, setGameState }: PlayProps) {
   return (
     <>
       <p>
+      <div style={{ fontSize: '60px', color: 'yellow', fontWeight: 'bold', textShadow: '1px 1px 1px #ccc' }}>
         {gameState.players[0].name} vs {gameState.players[1].name}
-        <p>Status of Game: {gameState.gameStatus.endOfGame ? "Game ended!" : "Continuing!"}</p>
+      </div>
+
+      <div style={{ fontSize: '30px', color: 'pink', fontWeight: 'bold' }}>
+        <p>{gameState.gameStatus.endOfGame ? "Game ended!" : "Game is continuing!"}</p>
+      </div>
+
+      <div style={{ fontSize: '30px', color: '#68e9b3', fontWeight: 'bold'}}>
+        {gameState.players[0].hasTurn ? <p>{gameState.players[0].name} it is your turn!</p> : <p>{gameState.players[1].name} it is your turn!</p>}
+      </div>
+
+      <div style={{ fontSize: '50px', color: '#c23866', fontWeight: 'bold', textShadow: '1px 1px 1px #ccc' }}>
         {gameState.gameStatus.endOfGame && <p>The winner is: {gameState.gameStatus.winner}</p>}
-        {gameState.players[0].hasTurn ? <p>{gameState.players[0].name} please select a bowl to play!</p> : <p>{gameState.players[1].name} please select a bowl to play!</p>}
+      </div>
 
       </p>
+      <div style={{ fontSize: '20px', color: 'yellow', fontWeight: 'bold' }}>
       <p>Player two: {gameState.players[1].name}</p>
+      </div>
       <button className="button button1" onClick={() => handlePitClick(12)}> {gameState.players[1].pits[5].nrOfStones} </button>
       <button className="button button1" onClick={() => handlePitClick(11)}>{gameState.players[1].pits[4].nrOfStones} </button>
       <button className="button button1" onClick={() => handlePitClick(10)}>{gameState.players[1].pits[3].nrOfStones} </button>
@@ -61,7 +74,9 @@ export function Play({ gameState, setGameState }: PlayProps) {
       <button className="button button1" onClick={() => handlePitClick(3)}>{gameState.players[0].pits[3].nrOfStones} </button>
       <button className="button button1" onClick={() => handlePitClick(4)}>{gameState.players[0].pits[4].nrOfStones} </button>
       <button className="button button1" onClick={() => handlePitClick(5)}>{gameState.players[0].pits[5].nrOfStones} </button>
+      <div style={{ fontSize: '20px', color: 'yellow', fontWeight: 'bold'}}>
       <p>Player one: {gameState.players[0].name}</p>
+      </div>
 
  
     </>
