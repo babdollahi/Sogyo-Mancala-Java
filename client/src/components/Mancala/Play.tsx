@@ -96,8 +96,7 @@ export function Play({ gameState, setGameState }: PlayProps) {
       <button className="button button1" onClick={() => handlePitClick(7)}>{gameState.players[1].pits[0].nrOfStones} </button>
       <button className="button button3" onClick={() => handlePitClick(13)}>{gameState.players[1].pits[6].nrOfStones} </button>
       <button className="button button2" onClick={() => handlePitClick(6)}>{gameState.players[0].pits[6].nrOfStones} </button>
-      <button className="button button4" onClick={() => newGameClick()} >Revenge!</button>
-
+      <button className="button button4" onClick={() => newGameClick()} > Revenge!</button>
 
       <p></p>
       <button className="button button1" onClick={() => handlePitClick(0)}>{gameState.players[0].pits[0].nrOfStones} </button>

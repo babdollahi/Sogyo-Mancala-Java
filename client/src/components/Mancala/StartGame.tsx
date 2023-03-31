@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { GameState } from "../../types/gameState";
 import "./StartGame.css";
 
+let imgs = [
+ "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_656/b_white/f_auto/q_auto/ncom/en_US/games/switch/m/mancala-classic-board-game-switch/hero"
+];
+
 type StartGameProps = {
   setGameState(newGameState: GameState): void;
 };
@@ -72,6 +76,10 @@ export function StartGame({ setGameState }: StartGameProps) {
       <button className="startGameButton" onClick={() => tryStartGame()}>
         Play Mancala!
       </button>
+
+      <div>
+      <img  style={{ width: 800, height: 400 }} src={imgs[0]}/>
+      </div>
     </>
   );
 }
