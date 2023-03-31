@@ -1,6 +1,10 @@
-import React from "react";
+import { request } from "http";
+import { Session } from "inspector";
+import React, { useState } from "react";
 import { GameState } from "../../types/gameState";
 import "./Play.css";
+// import { SessionContext } from './SessionContext';
+
 
 type PlayProps = {
   gameState: GameState;
@@ -35,6 +39,32 @@ export function Play({ gameState, setGameState }: PlayProps) {
       
   }
 
+  async function newGameClick() {
+  try {
+    const response = await fetch("mancala/api/start", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nameplayer1:gameState.players[1].name,
+        nameplayer2: gameState.players[0].name,
+      }),
+    });
+
+    if (response.ok) {
+      const gameState = await response.json();
+      setGameState(gameState);
+    } else {
+      console.error(response.statusText);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
   return (
     <>
       <p>
@@ -66,6 +96,8 @@ export function Play({ gameState, setGameState }: PlayProps) {
       <button className="button button1" onClick={() => handlePitClick(7)}>{gameState.players[1].pits[0].nrOfStones} </button>
       <button className="button button3" onClick={() => handlePitClick(13)}>{gameState.players[1].pits[6].nrOfStones} </button>
       <button className="button button2" onClick={() => handlePitClick(6)}>{gameState.players[0].pits[6].nrOfStones} </button>
+      <button className="button button4" onClick={() => newGameClick()} >Revenge!</button>
+
 
       <p></p>
       <button className="button button1" onClick={() => handlePitClick(0)}>{gameState.players[0].pits[0].nrOfStones} </button>
