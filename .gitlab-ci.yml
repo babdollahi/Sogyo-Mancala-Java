@@ -3,7 +3,7 @@ image: gradle:jdk17-alpine
 stages:
   - test
 
-sample-job:
+test:
   stage: test
   script:
     - gradle test
