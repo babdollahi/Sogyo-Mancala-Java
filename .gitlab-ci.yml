@@ -9,3 +9,7 @@ test:
     - git checkout -b feature-branch
     - echo "public class FailingTest { @org.junit.Test public void test() { org.junit.Assert.fail(); } }" > src/test/java/FailingTest.java
     - gradle test
+    
+  only:
+  variables:
+    - $CI_COMMIT_BRANCH =~ /^feature\/.*/
