@@ -1,9 +1,9 @@
 image: gradle:jdk17-alpine
 
 stages:
-  - sample-stage
+  - test
 
 sample-job:
-  stage: sample-stage
+  stage: test
   script:
-    - echo "Hello world"
+    - gradle test
