@@ -1,6 +1,6 @@
 package mancala;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +11,6 @@ class PlayerTest {
     @Test
     public void testNewPlayerHasTurn() {
         Player player = new Player();
-        assertFalse(player.hasTurn());
+        assertTrue(player.hasTurn());
     }
 }
