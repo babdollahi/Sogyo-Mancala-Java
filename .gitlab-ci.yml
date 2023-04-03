@@ -1,4 +1,4 @@
-image: ubuntu
+image: gradle:jdk17-alpine
 
 stages:
   - sample-stage
