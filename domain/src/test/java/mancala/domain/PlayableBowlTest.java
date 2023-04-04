@@ -120,106 +120,105 @@ public class PlayableBowlTest {
         });
     }
 
-    // @Test
-    // public void testOpponentsBowlIsNotPlayable() {
-    //     Bowl firstBowl = new PlayableBowl();
-    //     PlayableBowl bowl = (PlayableBowl) firstBowl.getBowlAtDistance(7);
-    //     assertThrows(IllegalStateException.class, () -> {
-    //         bowl.play();
-    //     });
-    // }
+    @Test
+    public void testOpponentsBowlIsNotPlayable() {
+        Bowl firstBowl = new PlayableBowl();
+        PlayableBowl bowl = (PlayableBowl) firstBowl.getBowlAtDistance(7);
+        assertThrows(IllegalStateException.class, () -> {
+            bowl.play();
+        });
+    }
 
-    // @Test
-    // public void testMoveDoesNotSkipMyKalaha() {
-    //     Bowl firstBowl = new PlayableBowl();
-    //     PlayableBowl bowl = (PlayableBowl) firstBowl.getBowlAtDistance(5);
-    //     Bowl bowlToInspect = firstBowl.getBowlAtDistance(6);
-    //     bowl.play();
-    //     assertEquals(1, bowlToInspect.getNumberOfStones());
-    // }
+    @Test
+    public void testMoveDoesNotSkipMyKalaha() {
+        Bowl firstBowl = new PlayableBowl();
+        PlayableBowl bowl = (PlayableBowl) firstBowl.getBowlAtDistance(5);
+        Bowl bowlToInspect = firstBowl.getBowlAtDistance(6);
+        bowl.play();
+        assertEquals(1, bowlToInspect.getNumberOfStones());
+    }
 
-    // @Test
-    // public void testMoveSkipsOpponentsKalaha() {
-    //     PlayableBowl firstBowl = new PlayableBowl(new int[] { 15, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0 });
-    //     Bowl bowl = firstBowl.getBowlAtDistance(13);
-    //     firstBowl.play();
-    //     assertEquals(0, bowl.getNumberOfStones());
-    // }
+    @Test
+    public void testMoveSkipsOpponentsKalaha() {
+        PlayableBowl firstBowl = new PlayableBowl(new int[] { 15, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0 });
+        Bowl bowl = firstBowl.getBowlAtDistance(13);
+        firstBowl.play();
+        assertEquals(0, bowl.getNumberOfStones());
+    }
 
-    // @Test
-    // public void testMoveCanGoRound() {
-    //     PlayableBowl firstBowl = new PlayableBowl(new int[] { 15, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0 });
-    //     firstBowl.play();
-    //     assertEquals(1, firstBowl.getNumberOfStones());
-    // }
+    @Test
+    public void testMoveCanGoRound() {
+        PlayableBowl firstBowl = new PlayableBowl(new int[] { 15, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0 });
+        firstBowl.play();
+        assertEquals(1, firstBowl.getNumberOfStones());
+    }
 
-    // @Test
-    // public void testAfterMoveTheTurnIsSwitched() {
-    //     PlayableBowl firstBowl = new PlayableBowl();
-    //     firstBowl.play();
-    //     assertFalse(firstBowl.getOwner().hasTurn());
-    // }
+    @Test
+    public void testAfterMoveTheTurnIsSwitched() {
+        PlayableBowl firstBowl = new PlayableBowl();
+        firstBowl.play();
+        assertFalse(firstBowl.getOwner().hasTurn());
+    }
 
-    // @Test
-    // public void testMoveEndingInKalahaDoesNotSwitchTurn() {
-    //     Bowl firstBowl = new PlayableBowl();
-    //     PlayableBowl bowl = (PlayableBowl) firstBowl.getBowlAtDistance(2);
-    //     bowl.play();
-    //     assertTrue(firstBowl.getOwner().hasTurn());
-    // }
+    @Test
+    public void testMoveEndingInKalahaDoesNotSwitchTurn() {
+        Bowl firstBowl = new PlayableBowl();
+        PlayableBowl bowl = (PlayableBowl) firstBowl.getBowlAtDistance(2);
+        bowl.play();
+        assertTrue(firstBowl.getOwner().hasTurn());
+    }
 
-    // @Test
-    // public void testStealing() {
-    //     Bowl firstBowl = new PlayableBowl(new int[] { 4, 4, 4, 4, 1, 0, 0, 4, 4, 4, 4, 4, 4, 0 });
-    //     PlayableBowl bowl = (PlayableBowl) firstBowl.getBowlAtDistance(4);
-    //     bowl.play();
-    //     assertEquals(0, firstBowl.getBowlAtDistance(5).getNumberOfStones());
-    //     assertEquals(5, firstBowl.getBowlAtDistance(6).getNumberOfStones());
-    //     assertEquals(0, firstBowl.getBowlAtDistance(7).getNumberOfStones());
-    // }
+    @Test
+    public void testStealing() {
+        Bowl firstBowl = new PlayableBowl(new int[] { 4, 4, 4, 4, 1, 0, 0, 4, 4, 4, 4, 4, 4, 0 });
+        PlayableBowl bowl = (PlayableBowl) firstBowl.getBowlAtDistance(4);
+        bowl.play();
+        assertEquals(0, firstBowl.getBowlAtDistance(5).getNumberOfStones());
+        assertEquals(5, firstBowl.getBowlAtDistance(6).getNumberOfStones());
+        assertEquals(0, firstBowl.getBowlAtDistance(7).getNumberOfStones());
+    }
 
-    // @Test
-    // public void testStealingDoesNotHappenOnOpponentsSide() {
-    //     Bowl firstBowl = new PlayableBowl(new int[] { 4, 4, 4, 4, 3, 4, 0, 0, 4, 4, 4, 4, 4, 0 });
-    //     PlayableBowl bowl = (PlayableBowl) firstBowl.getBowlAtDistance(4);
-    //     bowl.play();
-    //     assertEquals(5, firstBowl.getBowlAtDistance(5).getNumberOfStones());
-    //     assertEquals(1, firstBowl.getBowlAtDistance(6).getNumberOfStones());
-    //     assertEquals(1, firstBowl.getBowlAtDistance(7).getNumberOfStones());
-    // }
+    @Test
+    public void testStealingDoesNotHappenOnOpponentsSide() {
+        Bowl firstBowl = new PlayableBowl(new int[] { 4, 4, 4, 4, 3, 4, 0, 0, 4, 4, 4, 4, 4, 0 });
+        PlayableBowl bowl = (PlayableBowl) firstBowl.getBowlAtDistance(4);
+        bowl.play();
+        assertEquals(5, firstBowl.getBowlAtDistance(5).getNumberOfStones());
+        assertEquals(1, firstBowl.getBowlAtDistance(6).getNumberOfStones());
+        assertEquals(1, firstBowl.getBowlAtDistance(7).getNumberOfStones());
+    }
 
-    // @ParameterizedTest
-    // @ValueSource(ints = { 0, 1, 2, 3, 4, 5 })
-    // public void testAtGameOverAllBowlsAreEmptied(int index) {
-    //     PlayableBowl firstBowl = new PlayableBowl(new int[] { 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0 });
-    //     Bowl bowl = firstBowl.getBowlAtDistance(index);
-    //     firstBowl.play();
-    //     assertEquals(0, bowl.getNumberOfStones());
-    // }
+    @ParameterizedTest
+    @ValueSource(ints = { 0, 1, 2, 3, 4, 5 })
+    public void testAtGameOverAllBowlsAreEmptied(int index) {
+        PlayableBowl firstBowl = new PlayableBowl(new int[] { 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0 });
+        Bowl bowl = firstBowl.getBowlAtDistance(index);
+        firstBowl.play();
+        assertEquals(0, bowl.getNumberOfStones());
+    }
 
-    // @Test
-    // public void testAtGameOverAllStonesGoToKalaha() {
-    //     PlayableBowl firstBowl = new PlayableBowl(new int[] { 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0 });
-    //     Bowl kalaha = firstBowl.getBowlAtDistance(6);
-    //     firstBowl.play();
-    //     assertEquals(24, kalaha.getNumberOfStones());
-    // }
+    @Test
+    public void testAtGameOverAllStonesGoToKalaha() {
+        PlayableBowl firstBowl = new PlayableBowl(new int[] { 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0 });
+        Bowl kalaha = firstBowl.getBowlAtDistance(6);
+        firstBowl.play();
+        assertEquals(24, kalaha.getNumberOfStones());
+    }
 
-    // @Test
-    // public void testBoardIsNotCleanedIfGameIsNotOver() {
-    //     Bowl firstBowl = new PlayableBowl(new int[] { 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0 });
-    //     PlayableBowl bowl = (PlayableBowl) firstBowl.getBowlAtDistance(2);
-    //     bowl.play();
-    //     assertEquals(4, firstBowl.getNumberOfStones());
-    // }
+    @Test
+    public void testBoardIsNotCleanedIfGameIsNotOver() {
+        Bowl firstBowl = new PlayableBowl(new int[] { 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0 });
+        PlayableBowl bowl = (PlayableBowl) firstBowl.getBowlAtDistance(2);
+        bowl.play();
+        assertEquals(4, firstBowl.getNumberOfStones());
+    }
 
-    // @Test
-    // public void testAtGameOverNoneHasTurn() {
-    //     PlayableBowl firstBowl = new PlayableBowl(new int[] { 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0 });
-    //     firstBowl.play();
-    //     assertFalse(firstBowl.getOwner().hasTurn());
-    //     assertFalse(firstBowl.getOwner().getOpponent().hasTurn());
-    // }
+    @Test
+    public void testAtGameOverNoneHasTurn() {
+        PlayableBowl firstBowl = new PlayableBowl(new int[] { 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0 });
+        firstBowl.play();
+        assertFalse(firstBowl.getOwner().hasTurn());
+        assertFalse(firstBowl.getOwner().getOpponent().hasTurn());
+    }
 
 }
-
