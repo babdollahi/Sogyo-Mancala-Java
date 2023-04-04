@@ -64,3 +64,6 @@ Design an object-oriented model for mancala that can handle the following scenar
 - The winner is the player with the most beads on their territory (all bowls).
 
 Implement the game rules test-driven. Don't be afraid to delete or modify the Foo(Test) files, as they are just an example.
+
+#Code coverage
+The percentage of code coverage can be calculated by dividing the total number of lines of code in the software by the total number of lines of code executed by the tests. As a result, increasing the number of tests will improve code coverage, while decreasing it by eliminating tests or commenting out some lines. The 60% code coverage did not block the mainline merge request.
