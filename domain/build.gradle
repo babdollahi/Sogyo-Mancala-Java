@@ -3,6 +3,7 @@ plugins {
     id 'java'
     id 'java-library'
     id 'jacoco'
+    id 'checkstyle'
 }
 
 repositories {
@@ -63,4 +64,12 @@ jacocoTestCoverageVerification {
     }
 }
 
+checkstyle {
+    configFile file("../config/checkstyle/checkstyle.xml")
+    configProperties.checkstyleSuppressionsPath = file("../config/checkstyle/suppressions.xml").absolutePath
+    maxErrors = 15
+}
 
+checkstyleMain {
+    source = 'src/main/java'
+}
