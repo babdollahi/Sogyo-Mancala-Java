@@ -1,3 +1,6 @@
+import java.text.SimpleDateFormat
+import java.util.Date
+
 plugins {
     // Tell Gradle that we are builing java as a library (non-executable piece of code intended for use by other applications).
     id 'java'
@@ -73,3 +76,21 @@ checkstyle {
 checkstyleMain {
     source = 'src/main/java'
 }
+
+
+task printVersionInfo {
+    doLast {
+        println "Version Information:"
+        def buildTime = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date())
+        def buildNumber = "1.0.${buildTime}"
+        def gitCommitHash = "git rev-parse --short HEAD".execute().text.trim()
+        def branchName = "git rev-parse --abbrev-ref HEAD".execute().text.trim()
+        println "Build Number: $buildNumber"
+        println "Build Time: $buildTime"
+        println "Branch Name: $branchName"
+        println "Commit Hash: $gitCommitHash"
+    }
+}
+
+
+
