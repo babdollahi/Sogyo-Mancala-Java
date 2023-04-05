@@ -1,3 +1,5 @@
+[![Build Status](https://gitlab.com/{babdollahi}/{Mancala Java}/badges/{mainline}/pipeline.svg)](https://gitlab.com/{username}/{project}/pipelines)
+
 # Mancala
 
 This repository contains the files for three modules:
