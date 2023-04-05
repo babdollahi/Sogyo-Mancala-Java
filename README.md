@@ -1,4 +1,5 @@
-![](https://git.sogyo.nl/babdollahi/mancala-java/badges/babdollahi-mainline-patch-99200/build.svg)
+[![Build Status](https://git.sogyo.nl/babdollahi/mancala-java/badges/babdollahi-mainline-patch-99200/pipeline.svg)](https://git.sogyo.nl/babdollahi/mancala-java//pipelines)
+
 
 
 # Mancala
