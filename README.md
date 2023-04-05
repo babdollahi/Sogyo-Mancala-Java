@@ -1,4 +1,4 @@
-[![Build Status](https://gitlab.com/{babdollahi}/{Mancala Java}/badges/{mainline}/pipeline.svg)](https://gitlab.com/{username}/{project}/pipelines)
+[![Build Status](https://gitlab.com/{babdollahi}/{Mancala Java}/badges/{mainline}/pipeline.svg)](https://gitlab.com/{babdollahi}/{Mancala Java}/pipelines)
 
 # Mancala
 
