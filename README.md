@@ -1,6 +1,4 @@
-<!-- [![Build Status](https://gitlab.com/{babdollahi}/{Mancala Java}/badges/{babdollahi-mainline-patch-99200}/pipeline.svg)](https://gitlab.com/{babdollahi}/{Mancala Java}/pipelines) -->
-https://gitlab.example.com/<babdollahi>/<Mancala Java>/badges/<babdollahi-mainline-patch-99200>/release.svg
-
+https://git.sogyo.nl/babdollahi/mancala-java/badges/babdollahi-mainline-patch-99200/coverage.svg
 
 
 # Mancala
