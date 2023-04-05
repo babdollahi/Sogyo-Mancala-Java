@@ -81,12 +81,13 @@ checkstyleMain {
 task printVersionInfo {
     doLast {
         println "Version Information:"
-        def buildTime = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date())
-        def buildNumber = "1.0.${buildTime}"
+        def buildTimeV = new SimpleDateFormat("yyyyMMdd.HHmmss").format(new Date())
+        def buildNumber = "V.${buildTimeV}"
+        def buildTime = new SimpleDateFormat("yyyy-MM-dd/`HH:mm:ss").format(new Date())
         def gitCommitHash = "git rev-parse --short HEAD".execute().text.trim()
         def branchName = "git rev-parse --abbrev-ref HEAD".execute().text.trim()
         println "Build Number: $buildNumber"
-        println "Build Time: $buildTime"
+        println "Build Date Time: $buildTime"
         println "Branch Name: $branchName"
         println "Commit Hash: $gitCommitHash"
     }
