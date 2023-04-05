@@ -1,5 +1,6 @@
-[![Build Status](https://git.sogyo.nl/babdollahi/mancala-java/badges/babdollahi-mainline-patch-99200/pipeline.svg)](https://git.sogyo.nl/babdollahi/mancala-java//pipelines)
+[![Build Status](https://git.sogyo.nl/babdollahi/mancala-java/badges/babdollahi-mainline-patch-99200/pipeline.svg)](https://git.sogyo.nl/babdollahi/mancala-java/pipelines)
 
+[![Code Coverage](https://git.sogyo.nl/babdollahi/mancala-java/badges/babdollahi-mainline-patch-99200/Code_Coverage-80%25-brightgreen.svg)](https://git.sogyo.nl/babdollahi/mancala-java/coverage-report)
 
 
 # Mancala
