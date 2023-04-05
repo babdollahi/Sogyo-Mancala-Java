@@ -1,4 +1,4 @@
-![](https://git.sogyo.nl/babdollahi/mancala-java/badges/babdollahi-mainline-patch-99200/coverage.svg)
+![](https://git.sogyo.nl/babdollahi/mancala-java/badges/babdollahi-mainline-patch-99200/build.svg)
 
 
 # Mancala
