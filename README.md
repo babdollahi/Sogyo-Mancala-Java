@@ -1,4 +1,4 @@
-[![Build Status](https://gitlab.com/{babdollahi}/{Mancala Java}/badges/{mainline}/pipeline.svg)](https://gitlab.com/{babdollahi}/{Mancala Java}/pipelines)
+[![Build Status](https://gitlab.com/{babdollahi}/{Mancala Java}/badges/{babdollahi-mainline-patch-99200}/pipeline.svg)](https://gitlab.com/{babdollahi}/{Mancala Java}/pipelines)
 
 # Mancala
 
