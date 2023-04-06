@@ -63,4 +63,6 @@ Design an object-oriented model for mancala that can handle the following scenar
 - The game ends if all bowls of the turn player are empty
 - The winner is the player with the most beads on their territory (all bowls).
 
+
 Implement the game rules test-driven. Don't be afraid to delete or modify the Foo(Test) files, as they are just an example.
+
