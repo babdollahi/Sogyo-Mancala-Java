@@ -8,7 +8,7 @@ test:
   script:
     - gradle test
 
-release_job:
+release:
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   rules:
